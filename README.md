@@ -18,34 +18,36 @@ Then call q.initQuickRoutes(urlPatterns) in your urls.py file to register the qu
 So in demo-speak....
 
 ### In your views
-`from django_quickroutes import q
+```from django_quickroutes import q
 
 @q.route("/foo/bar")
 function view1(request):
 ...
 
-`@q.route("/foo/bar/:id")`
-`function view2(request, id):`
-`...`
-
+@q.route("/foo/bar/:id")
+function view2(request, id):
+...
+```
 
 django-quickroutes doesn't care about the forward slash. 
-This is the same as saying "/restaurants/:type/:city".
-`@q.route("restaurants/:type/:city")`
-`function listRestaurants(request, type, city):`
-`...`
+This is the same as saying "/restaurants/:type/:city".:
 
+```@q.route("restaurants/:type/:city")
+function listRestaurants(request, type, city):
+...
+```
 
-Or if for some reason you are in love with django's idea of what a route description should look like (i.e. raw regex)
-`
+If, for some reason, you prefer django's idea of what a route descriptor should look like (i.e. raw regex),
+You can still save time by doing this:
+```
 @q.route("^foo/bar/(?P<id>\d+)/$")
 function view4(request, id):
 ...
-`
+```
+Just be sure you begin the route by the character '^' (aka regex's beginning-of-string char) to let DJ-QR know you're going old-school on this q.route.
 
-Then....
 
-## In urls.py
+## In urls.py of your app
 `
 import myapp.views
 
@@ -54,7 +56,7 @@ urlPatterns=[
 ]
 ....
 
-# Placed at the end of the file and pass in the urlPatterns collection. 
+# Place at the end of the file and pass in the urlPatterns collection. 
 # dj-qr will append your quick-routes.
 initQuickRoutes(urlPatterns)
 `
