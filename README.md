@@ -12,30 +12,29 @@ django-quickroutes is the beginning of my efforts to impose some tolerance into 
 
 
 ## How to use
-Add the q.route decorator on top of your view functions and be sure your view or controller file is imported in your urls.py.
+Add the q.route decorator on top of your view functions and be sure your views are being imported into your urls.py.
 Then call q.initQuickRoutes(urlPatterns) in your urls.py file to register the quick routes. 
 
 So in demo-speak....
 
-### In your views/controllers
-`
-from django_quickroutes import q
+### In your views
+`from django_quickroutes import q
 
 @q.route("/foo/bar")
 function view1(request):
 ...
 
-@q.route("/foo/bar/:id")
-function view2(request, id):
-...
-`
+`@q.route("/foo/bar/:id")`
+`function view2(request, id):`
+`...`
 
-django-quickroutes doesn't care about the forward slash. This is the same as saying "/restaurants/:type/:city".
-`
-@q.route("restaurants/:type/:city")
-function listRestaurants(request, type, city):
-...
-`
+
+django-quickroutes doesn't care about the forward slash. 
+This is the same as saying "/restaurants/:type/:city".
+`@q.route("restaurants/:type/:city")`
+`function listRestaurants(request, type, city):`
+`...`
+
 
 Or if for some reason you are in love with django's idea of what a route description should look like (i.e. raw regex)
 `
