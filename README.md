@@ -10,6 +10,11 @@ I wanted all the time-saving, monolithic goodness (IMO) of Django, with the dev-
 
 django-quickroutes is the beginning of my efforts to impose some tolerance into Django's unneccesarily rigid practices.
 
+## How to Install
+
+Not yet uploaded to Pypi. For now, you can always just download source and reference in your project.
+
+Also be sure to add to your INSTALLED_APPS before the app it will be used in. i.e. "xxx.django-quickroutes"
 
 ## How to use
 Add the q.route decorator on top of your view functions and be sure your views are being imported into your urls.py.
